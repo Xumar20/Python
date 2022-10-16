@@ -1,0 +1,45 @@
+SELECT round(123.67,7) FROM DUAL;
+SELECT round(123.67) FROM DUAL;
+SELECT round(123.67,-1) FROM DUAL;
+SELECT ceil(12.5678) FROM DUAL;
+SELECT floor(12.5678) FROM DUAL;
+
+SELECT trunc(123.67,1) FROM DUAL;
+SELECT trunc(123.67) FROM DUAL;
+select trunc(17.6564) from dual;
+select trunc(146.321,2) from dual;
+select 17.64-trunc(17.64) from dual;
+select sqrt(64) from dual;
+select power(2,4) from dual;
+SELECT mod(10,3) FROM DUAL;
+select sysdate from dual;
+SELECT sysdate+2 "add_days" FROM DUAL;
+SELECT sysdate-1 "sub_days" FROM DUAL;
+SELECT sysdate+16/24 "add_hours" FROM DUAL;
+SELECT sysdate-2/24 "sub_hours" FROM DUAL;
+SELECT months_between('01-DEC-2000', '01-SEP-2000') FROM DUAL;
+SELECT add_months('01-OCT-2000', 3) FROM DUAL;
+
+SELECT next_day('01-JUL-2000', 'MONDAY') FROM DUAL;
+SELECT last_day('01-JAN-2000') FROM DUAL;
+select trunc(sysdate,'month') from dual;
+select sysdate from dual;
+select level from dual connect by level<10;
+
+SELECT next_day('sysdate', 'MONDAY') FROM DUAL;
+
+create table test(
+test_id number
+);
+insert into test values(2);
+insert into test values(5);
+insert into test values(8);
+insert into test values(12);
+insert into test values(21);
+select *from test;
+
+select avg(test_id) mean from test;
+select round(avg(test_id)) mean from test;
+select median(test_id)  from test;
+
+select round(13.56666666666666666666666666666666666667) from dual;
