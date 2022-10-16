@@ -1,0 +1,31 @@
+create table test1(
+id number,
+t_n nvarchar2(20)
+);
+
+
+insert into test1 values(1,'aaaa');
+insert into test1 values(1,'aaaa');
+insert into test1 values(2,'bbb');
+insert into test1 values(2,'bbb');
+insert into test1 values(2,'bbb');
+insert into test1 values(3,'ccc');
+insert into test1 values(3,'ccc');
+insert into test1 values(3,'ccc');
+insert into test1 values(3,'ccc');
+select * from test1;
+
+select distinct id from test1;
+select distinct t_n from test1;
+
+select id,t_n ,count(*) from test1 group by id,t_n;
+
+select rowid,id,t_n from test1;
+select t_n,id, min(rowid)from test1 group by id,t_n;
+select t_n,id, max(rowid)from test1 group by id,t_n;
+delete test1 where rowid not in (select max(rowid)from test1 group by id,t_n);
+select id, t_n, rowid from test1;
+
+select amount, currency_id from contract;
+select round(corr(amount, currency_id) over (order by amount,currency_id))as corr from contract;
+select avg(corr) from (select round(corr(amount,currency_id) over (order by amount,currency_id)) corr from contract);
