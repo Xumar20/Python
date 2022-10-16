@@ -1,0 +1,100 @@
+create table library(
+user_name char(400) NOT NULL,
+user_surname varchar2(2000),
+user_age int,
+user_id number, 
+card_id number
+);
+
+select*from library;
+
+alter table library rename to library_information;
+alter table library_information rename to library_data;
+alter table library_data rename column user_surname to user_lastname;
+alter table library_data rename column card_id to student_card_id;
+alter table library_data rename column user_age to user_year;
+alter table library_data modify user_lastname varchar2(4000);
+alter table library_data modify user_name char(2000);
+alter table library_data modify user_lastname varchar2(3550);
+alter table library_data rename column user_name to student_name;
+
+select *from library_data;
+
+alter table library_data rename column user_lastname to student_surname;
+alter table library_data rename column user_year to student_age;
+
+select *from library_data;
+alter table library_data rename column user_id to student_id;
+select*from library_data;
+
+alter table library_data add interesting_table char(50);
+alter table library_data modify interesting_table char(500);
+alter table library_data rename column interesting_table to interesting_book;
+
+select *from library_data;
+alter table library_data add uninteresting_book varchar2(1200);
+alter table library_data modify uninteresting_book varchar2(3400);
+alter table library_data modify uninteresting_book varchar2(4000);
+select *from library_data;
+
+alter table library_data modify student_surname CONSTRAINT st_surname_nn NOT NULL;
+alter table library_data add CONSTRAINT st_age_ck CHECK (student_age>10);
+alter table library_data modify (student_name NULL);
+
+Insert into library_data(student_name,student_surname,student_age,student_id,student_card_id)values('Khumar','Mirzayeva',19,1,543);
+Insert into library_data(student_name,student_surname,student_age,student_id,student_card_id)values('Banu','Hamidova',17,2,583);
+
+select *from library_data;
+
+alter table library_data rename to lb_data;
+
+alter table lb_data add CONSTRAINT st_id_pk PRIMARY KEY(student_id);
+alter table lb_data add UNIQUE (student_card_id);
+
+Insert into lb_data(student_name,student_surname,student_age,student_id,student_card_id)values('Jala','Agayeva',21,3,541);
+Insert into lb_data(student_name,student_surname,student_age,student_id,student_card_id)values('Nigar','Azizova',17,4,213);
+Insert into lb_data(student_name,student_surname,student_age,student_id,student_card_id)values('Aylin','Hamidova',21,5,941);
+Insert into lb_data(student_name,student_surname,student_age,student_id,student_card_id)values('Vusala','Baxishova',17,6,413);
+Insert into lb_data(student_name,student_surname,student_age,student_id,student_card_id)values('Samira','Qaimova',11,7,141);
+Insert into lb_data(student_name,student_surname,student_age,student_id,student_card_id)values('Narmin','Abisova',15,8,313);
+Insert into lb_data(student_name,student_surname,student_age,student_id,student_card_id)values('Samra','Abbasova',21,9,341);
+Insert into lb_data(student_name,student_surname,student_age,student_id,student_card_id)values('Laman','Mirzazada',17,10,813);
+
+alter table lb_data modify student_name CONSTRAINT st_nm_un UNIQUE;
+alter table lb_data modify (student_surname NULL) ;
+
+select*from lb_data;
+
+alter table lb_data add CONSTRAINT uninteresting_book_un UNIQUE(uninteresting_book);
+alter table lb_data add UNIQUE(interesting_book);
+
+alter table lb_data add friend char(50);
+alter table lb_data add patrynik_surname varchar2(500);
+alter table lb_data add hour int;
+
+select *from lb_data;
+
+alter table lb_data modify friend char(200);
+alter table lb_data modify friend char(2000);
+alter table lb_data modify patrynik_surname varchar2(2000);
+alter table lb_data modify patrynik_surname varchar2(4000);
+
+alter table lb_data add CONSTRAINT hour_ck CHECK (hour>3);
+alter table lb_data modify hour number;
+alter table lb_data add CONSTRAINT friend_un UNIQUE(friend);
+alter table lb_data add UNIQUE (patrynik_surname);
+
+select *from lb_data;
+
+alter table lb_data add number_of_books int;
+alter table lb_data modify number_of_books float;
+
+select *from lb_data;
+
+alter table lb_data add CONSTRAINT nob_un UNIQUE(number_of_books);
+alter table lb_data add CONSTRAINT nob_chk CHECK (number_of_books>2);
+alter table lb_data modify student_name constraint student_name_un UNIQUE;
+
+alter table lb_data rename to library_database;
+drop table library_database;
+flashback table  library_database to before drop;
