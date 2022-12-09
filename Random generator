@@ -1,0 +1,9 @@
+from datetime import datetime
+from time import time_ns
+def randomgen(a,b):
+  k=time_ns()%b
+  if(k<a):
+    k=k+a
+    return k
+    
+print(randomgen(100,200))
