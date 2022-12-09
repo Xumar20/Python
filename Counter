@@ -1,0 +1,11 @@
+import time
+from time import sleep, time
+can_run = True
+the_number = int(input("Başlanğıc ədədi daxil edin: "))
+end_number = int(input("Son ədədi daxil edin: "))
+while can_run:
+    print(the_number)
+    sleep(1)
+    the_number = the_number -1
+    if  the_number == end_number: 
+        can_run = False
