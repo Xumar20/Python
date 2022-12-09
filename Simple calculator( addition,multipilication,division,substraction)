@@ -1,0 +1,48 @@
+def Toplama(a, b):
+    return a + b
+
+
+def Çıxma(a, b):
+    return a - b
+
+def Vurma(a, b):
+    return a * b
+
+
+def Bölmə(a, b):
+    return a / b
+
+print("Əməliyyatı seçin")
+print("1.Toplama")
+print("2.Çıxma")
+print("3.Vurma")
+print("4.Bölmə")
+
+while True:
+    
+    choice = input("Enter choice(1/2/3/4): ")
+
+    
+    if choice in ('1', '2', '3', '4'):
+        num1 = float(input("Birinci rəqəmi daxil edin: "))
+        num2 = float(input("İkinci rəqəmi daxil edin: "))
+
+        if choice == '1':
+            print(num1, "+", num2, "=", Toplama(num1, num2))
+
+        elif choice == '2':
+            print(num1, "-", num2, "=", Çıxma(num1, num2))
+
+        elif choice == '3':
+            print(num1, "*", num2, "=", Vurma(num1, num2))
+
+        elif choice == '4':
+            print(num1, "/", num2, "=", Bölmə(num1, num2))
+        
+        
+        next_calculation = input("Daha bir əməliyyat etmək istəyirsinizmi (yes/no): ")
+        if next_calculation == "no":
+          break
+    
+    else:
+        print("Invalid Input")
