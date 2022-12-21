@@ -1,0 +1,7 @@
+class human:
+  def __init__(self):
+    print('salam')
+  def topla(a,b):
+    return a+b
+obj1=human.topla(3,5)
+print(obj1)
