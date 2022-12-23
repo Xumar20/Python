@@ -1,0 +1,33 @@
+first_row=reviews.iloc[0]
+print(first_row)
+
+
+first_descriptions=reviews.iloc[:10, 1]
+print(first_descriptions)
+
+
+sample_reviews=reviews.iloc[[1, 2, 3,5,8],]
+sample_reviews
+
+
+reviews.points.median()
+reviews.country.unique()
+reviews.country.value_counts()
+
+review_price_mean = reviews.price.mean()
+reviews.price.map(lambda p: p - review_price_mean)
+
+bargain_wine=reviews.head(3)
+bargain_wine
+
+def rating (row):
+  if row.country =='Canada':
+    return 3
+  elif row.points >95:
+    return 3
+  elif row.points>85:
+    retunr 2
+  else 
+    return 1
+
+star_ratings= reviews.apply(rating)
